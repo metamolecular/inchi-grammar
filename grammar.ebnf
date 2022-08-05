@@ -1,0 +1,27 @@
+<string>            ::= <prefix> <formula>? <connections>? <h_atoms>? ;
+<formula>           ::= "/" <elemental> ( "." <elemental> )* ;
+<connections>       ::= "/c" <graph> ( ";" <graph> )* ;
+<h_atoms>           ::= "/h" ( <vh_count> ( "," <mh_count> )* ) | <mh_count> ;
+<elemental>         ::= <carbons>? <hydrogens>? <nitrogens>? <oxygens>?
+                      | <sulfurs>? <phosphoruses>? ;
+<carbons>           ::= "C" <count>? ;
+<hydrogens>         ::= "H" <count>?;
+<nitrogens>         ::= "N" <count>?;
+<oxygens>           ::= "O" <count>?;
+<sulfurs>           ::= "S" <count>?;
+<phosphoruses>      ::= "P" <count>?;
+(* only 112 to go... *)
+<graph>             ::= <index> <body> ;
+<body>              ::= ( "-" | <branch>+ ) <tail> ;
+<branch>            ::= "(" <tail>+ ")" ;
+<tail>              ::= <index> <body>* ;
+<vh_count>          ::= <virtual_hydrogens> ( "," <virtual_hydrogens> )* ;
+<mh_count>          ::= <mobile_hydrogens> ( "," <mobile_hydrogens> )* ;
+<virtual_hydrogens> ::= <index> ( "-" <index>)? "H" <count>? ;
+<mobile_hydrogens>  ::= "(" "H" <count>? ( "," <index> )+ ")" ;
+<index>             ::= <nonzero> <digit>* ;
+<count>             ::= ( "1" <digit>+ ) | ( <twoplus> <digit>* ) ;
+<digit>             ::= "0" | <nonzero> ;
+<nonzero>           ::= "1" | <twoplus> ;
+<prefix>            ::= "InChI=1S" ;
+<twoplus>           ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
