@@ -2,14 +2,13 @@
 <formula>           ::= "/" <elemental> ( "." <elemental> )* ;
 <connections>       ::= "/c" <graph> ( ";" <graph> )* ;
 <h_atoms>           ::= "/h" ( <vh_count> ( "," <mh_count> )* ) | <mh_count> ;
-<elemental>         ::= <carbons>? <hydrogens>? <nitrogens>? <oxygens>?
-                      | <sulfurs>? <phosphoruses>? ;
-<carbons>           ::= "C" <count>? ;
-<hydrogens>         ::= "H" <count>?;
-<nitrogens>         ::= "N" <count>?;
-<oxygens>           ::= "O" <count>?;
-<sulfurs>           ::= "S" <count>?;
-<phosphoruses>      ::= "P" <count>?;
+<elemental>         ::= <c>? <h>? <n>? <o>? <p>? <s>? ;
+<c>                 ::= "C" <count>? ;
+<h>                 ::= "H" <count>?;
+<n>                 ::= "N" <count>?;
+<o>                 ::= "O" <count>?;
+<p>                 ::= "P" <count>?;
+<s>                 ::= "S" <count>?;
 (* only 112 to go... *)
 <graph>             ::= <index> <body> ;
 <body>              ::= ( "-" | <branch>+ ) <tail> ;
