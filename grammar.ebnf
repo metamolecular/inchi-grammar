@@ -1,14 +1,16 @@
 (* Uncomment to run multi-string tests at *)
 (* https://mdkrajnak.github.io/ebnftest/ *)
-(* <test>              ::= <string> ( "\n" <string>)*; *)
+<test>              ::= <string> ( "\n" <string>)*;
 <string>            ::= <prefix> <formula>? <connections>? <h_atoms>? ;
 <formula>           ::= "/" <elemental> ( "." <elemental> )* ;
 <connections>       ::= "/c" <graph> ( ";" <graph> )* ;
 <h_atoms>           ::= "/h"
                         ( ( <vh_count> ( "," <mh_count> )* ) | <mh_count> ) ;
-<elemental>         ::= <c>? <h>? <br>? <cl>? <f>? <i>? <n>? <o>? <p>? <s>? ;
+<elemental>         ::= <b>? <c>? <h>? <br>? <cl>? <f>? <i>? <n>? <o>?
+                        <p>? <s>? ;
+<b>                 ::= "B" <count>? ;
 <c>                 ::= "C" <count>? ;
-<h>                 ::= "H" <count>?;
+<h>                 ::= "H" <count>? ;
 <br>                ::= "Br" <count>? ;
 <cl>                ::= "Cl" <count>? ;
 <f>                 ::= "F" <count>? ;
@@ -25,7 +27,8 @@
 <vh_count>          ::= <virtual_hydrogens> ( "," <virtual_hydrogens> )* ;
 <mh_count>          ::= <mobile_hydrogens>+ ;
 <virtual_hydrogens> ::= <index> ( ( "," |  "-" ) <index> )* "H" <count>? ;
-<mobile_hydrogens>  ::= "(H" ( "-" | <count> )? ( "," <index> )+ ")" ;
+(* <mobile_hydrogens>  ::= "(H" ( "-" | <count> )? ( "," <index> )+ ")" ; *)
+<mobile_hydrogens>  ::= "(H" (<count>? "-" | <count> )? ( "," <index> )+ ")" ;
 <index>             ::= <nonzero> <digit>* ;
 <count>             ::= ( "1" <digit>+ ) | ( <twoplus> <digit>* ) ;
 <digit>             ::= "0" | <nonzero> ;
