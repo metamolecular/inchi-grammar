@@ -23,9 +23,9 @@ class Harness
     end
 end
 
-File.readlines('../test.txt').each do |line|
+File.readlines('../strings.txt').each do |string|
     c = Harness::new();
-    result = c.test(line)
+    result = c.test(string)
 
     puts result if !result.nil?
 end
