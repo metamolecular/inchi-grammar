@@ -1,6 +1,6 @@
 (* Uncomment to run multi-string tests at *)
 (* https://mdkrajnak.github.io/ebnftest/ *)
-<test>              ::= <string> ( "\n" <string>)*;
+(* <test>              ::= <string> ( "\n" <string>)*; *)
 <string>            ::= <prefix> <formula>? <connections>? <h_atoms>? ;
 <formula>           ::= "/" <elemental> ( "." <elemental> )* ;
 <connections>       ::= "/c" <graph>? ( ";" <graph>? )* ;
