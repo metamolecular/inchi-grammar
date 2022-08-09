@@ -29,5 +29,5 @@ index               ::= nonzero digit*
 count               ::= ( "1" digit+ ) | ( twoplus digit* )
 digit               ::= "0" | nonzero
 nonzero             ::= "1" | twoplus
-prefix              ::= "InChI=1S"
+prefix              ::= "InChI=1" "S"?
 twoplus             ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"

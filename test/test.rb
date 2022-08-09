@@ -23,9 +23,21 @@ class Harness
     end
 end
 
+failed = false
+
 File.readlines('../strings.txt').each do |string|
     c = Harness::new();
     result = c.test(string)
 
-    puts result if !result.nil?
+    if !result.nil?
+        failed = true
+
+        puts result
+    end
+end
+
+if failed
+    puts "FAIL"
+else
+    puts "PASS"
 end
