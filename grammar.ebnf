@@ -2,7 +2,7 @@ String              ::= prefix formula? connections? h_atoms? tetrahedral?
 formula             ::= "/" elemental ( "." elemental )*
 connections         ::= "/c" graph? ( ";" graph? )*
 h_atoms             ::= "/h" hydrogens? ( ";" hydrogens? )*
-tetrahedral         ::= "/t" tetrahedral_center? ( ";" tetrahedral_center? )*
+tetrahedral         ::= "/t" tetrahedral_centers? ( ";" tetrahedral_centers? )*
 elemental           ::= count? ( c h? b? br? cl? f? rest_elements )
                       | ( b? br? cl? f? h? rest_elements )
 rest_elements       ::= i? mg? n? o? p? s?
@@ -28,6 +28,7 @@ vh_count            ::= virtual_hydrogens ( "," virtual_hydrogens )*
 mh_count            ::= mobile_hydrogens+
 virtual_hydrogens   ::= index ( ( "," |  "-" ) index )* "H" count?
 mobile_hydrogens    ::= "(H" (count? "-" | count )? ( "," index )+ ")"
+tetrahedral_centers ::= tetrahedral_center ( "," tetrahedral_center )*
 tetrahedral_center  ::= index ( "+" | "-" | "?" )
 index               ::= nonzero digit*
 count               ::= ( "1" digit+ ) | ( twoplus digit* )
